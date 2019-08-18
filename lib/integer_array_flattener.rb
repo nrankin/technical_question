@@ -11,16 +11,18 @@ class IntegerArrayFlattener
 
 	def self.process(element, flattened_array)
 		if is_iterable(element) 
-			element.each do |e| 
-				process(e, flattened_array)
-			end
+			process_nested_array(element, flattened_array)
 		else
-		 flattened_array << element
-		end 	
-
+			flattened_array << element
+		end
 		return flattened_array
-
 	end	
+
+	def self.process_nested_array(element, flattened_array)
+		element.each do |e| 
+			process(e, flattened_array)
+		end
+	end
 
 	def self.is_iterable(element)
 		return element.respond_to?('each')
