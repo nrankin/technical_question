@@ -14,4 +14,10 @@ describe IntegerArrayFlattener do
 		lambda { IntegerArrayFlattener.flatten(5) }.must_raise(ArgumentError)
 	end
 
+	it 'flattens an array of arbitrarily nested arrays of integers' do
+		arr = [[1,2,[3]],4]
+		result = IntegerArrayFlattener.flatten(arr)
+		assert_equal(arr.flatten, result)
+	end
+
 end
