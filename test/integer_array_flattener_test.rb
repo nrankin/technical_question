@@ -8,5 +8,10 @@ describe IntegerArrayFlattener do
 		result = IntegerArrayFlattener.flatten(integer_array)
 		result.must_be_kind_of(Array)
 	end
-		
+
+	it 'only accepts arrays' do
+		lambda { IntegerArrayFlattener.flatten("john") }.must_raise(ArgumentError)
+		lambda { IntegerArrayFlattener.flatten(5) }.must_raise(ArgumentError)
+	end
+
 end
